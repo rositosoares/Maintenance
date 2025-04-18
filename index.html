@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valdan-Tavia Tour & Travel</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 15px 0;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: white;
+      padding-top: 100px;
+    }
+
+    .static-welcome {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .static-center {
+      font-size: 22px;
+      color: #ff9800;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content p {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+      position: relative;
+      padding-top: 80px;
+
+    }
+
+    .section h2 {
+      font-size: 28px;
+      color: #333;
+      padding-bottom: 0px;
+
+    }
+
+    .packages {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      
+    }
+
+    .package {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      padding: 20px;
+      margin-bottom: 0px;
+    }
+
+    .package h3 {
+      margin-bottom: 0px;
+      color: #0077cc;
+    }
+
+    .package p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+
+    .slider-section {
+  padding: 40px 20px;
+  background-color: #fefefe;
+}
+
+.slider-section h2, .slider-section h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.slider-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 20px;
+
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.package-card {
+  flex: 0 0 auto;
+  width: 280px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.package-card:hover {
+  transform: scale(1.03);
+}
+
+.package-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.package-card h3 {
+  margin: 10px 0;
+  color: #0077cc;
+}
+
+.package-card p {
+  font-size: 14px;
+  padding: 0 10px;
+  color: #555;
+}
+
+.package-card button {
+  margin: 10px 5px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.package-card button a {
+  text-decoration: none;
+  color: white;
+}
+
+.slider-btn {
+  background-color: rgba(0,0,0,0.4);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slider-btn.left {
+  left: 10px;
+}
+
+.slider-btn.right {
+  right: 10px;
+}
+
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 30px;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+  gap: 20px;
+  min-width: 100%;
+}
+
+.package {
+  min-width: 300px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+}
+
+.package img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+button.prev,
+button.next {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+}
+
+button.prev {
+  left: 10px;
+}
+
+button.next {
+  right: 10px;
+}
+
+
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 300px;
+  margin: 0 10px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.slide img {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background-color: rgba(51,51,51,0.7);
+  color: white;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10;
+}
+
+.slider-btn.prev {
+  left: 0;
+}
+
+.slider-btn.next {
+  right: 0;
+}
+
+/* Kontak Section Style */
+.contact-section {
+  background-color: rgba(255, 255, 255, 0.1); /* Transparan */
+  padding: 60px 20px;
+  text-align: center;
+  backdrop-filter: blur(10px); /* Efek blur modern */
+  border-radius: 20px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Flex dan Style Info Kontak */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.contact-item i {
+  font-size: 1.5rem;
+  color: #007bff;
+  min-width: 30px;
+}
+
+.contact-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+/* Responsif untuk Mobile */
+@media (max-width: 600px) {
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>
+    <img src="assets/logo.jpg" alt="Valdan-Tavia" style="height: 40px; vertical-align: middle; margin-right: 10px;">
+    Valdan-Tavia Agency
+  </h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#vizita-asia">Cek-Presu-Ticket</a>
+      <a href="#contact">Kontaktu</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <video autoplay muted loop>
+      <source src="assets/video-indonesia.mp4" type="video/mp4">
+      Browser ida ne'e la suporta video!
+    </video>
+    <div class="hero-content">
+      <h1 class="static-welcome">BEM-VINDO MAI PAJINA OFFISIAL VALDAN-TAVIA TOUR AND TRAVEL</h1>
+      <h2 class="static-welcome"><a href="#vizita-asia">Cek presu tiket ba Asia</a></h2>
+      <h2 class="static-welcome"><a href="#vizita-eropa">Cek presu tiket ba Eropa</a></h2>
+       <h2 class="static-welcome"><a href="#contact">Kontakto Ami</a></h2>
+    </div>
+  </section>
+
+<section class="section" id="vizita-asia" style="padding-top: 0px;">
+  <h2>Presu Tiket Viajen ba Asia</h2>
+  <div class="slider-container">
+    <button class="slider-btn prev" onclick="slide('asia', -1)">&#10094;</button>
+    <div class="slider-track asia-slider">
+   <div class="package-card">
+      <img src="assets/bali.jpeg" alt="Bali Explore" />
+      <h3>Dili - Bali</h3>
+      <p>BALI</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+       <div class="package-card">
+      <img src="assets/kuala-lumpur.jpeg" alt="Malaysia" />
+      <h3>Dili - Malaysia</h3>
+      <p>Kuala-Lumpur</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+    <div class="package-card">
+      <img src="assets/kuala-lumpur.jpeg" alt="Malaysia" />
+      <h3>Dilli - Singapore</h3>
+      <p>Singapura</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+     <div class="package-card">
+      <img src="assets/china.jpeg" alt="china" />
+      <h3>Dili - Beijing, China</h3>
+      <p>China</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+
+    
+    </div>
+    <button class="slider-btn next" onclick="slide('asia', 1)">&#10095;</button>
+  </div>
+</section>
+
+<section class="section" id="vizita-eropa" >
+  <h2>Presu Tiket Viajen ba Eropa</h2>
+  <div class="slider-container">
+    <button class="slider-btn prev" onclick="slide('eropa', -1)">&#10094;</button>
+    <div class="slider-track eropa-slider">
+      <!-- Tambahkan 12+ negara Eropa -->
+      </div>
+       <div class="package-card">
+      <img src="assets/lisboa.jpeg" alt="Lisboa" />
+      <h3>Dili - Lisboa, Portugal</h3>
+      <p>Lisboa</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+      <div class="package-card">
+      <img src="assets/london.jpeg" alt="london" />
+      <h3>Dili - London, UK</h3>
+      <p>UK</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+        <div class="package-card">
+      <img src="assets/ireland.jpeg" alt="ireland" />
+      <h3>Dili - Ireland</h3>
+      <p>Ireland</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+       <div class="package-card">
+      <img src="assets/australia.jpeg" alt="australia" />
+      <h3>Dili - Australia</h3>
+      <p>Australia</p>
+      <button><a href="presu-ticket.html">Cek presu tiket</a></button>
+      <button><a href="presu-tiket-volta.html">Presu tiket volta</a></button>
+    </div>
+     
+  
+    <button class="slider-btn next" onclick="slide('eropa', 1)">&#10095;</button>
+  </div>
+</section>
+
+
+<section class="section contact-section" id="contact">
+  <h2>Kontaktu Ami</h2>
+  <div class="contact-info">
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <div>
+        <strong>Email:</strong>
+        <a href="mailto:taviavaldan@gmail.com">taviavaldan@gmail.com</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-facebook"></i>
+      <div>
+        <strong>Facebook:</strong>
+        <a href="https://web.facebook.com/" target="_blank">facebook.com</a>
+      </div>
+    </div>
+     <div class="contact-item">
+      <i class="fab fa-facebook"></i>
+      <div>
+        <div class="contact-item">
+  <i class="fab fa-whatsapp"></i>
+  <div>
+    <strong>WhatsApp:</strong>
+    <a href="https://wa.me/67078359053" target="_blank">+670 78359053</a>
+  </div>
+</div>
+
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-phone"></i>
+      <div>
+        <strong>Telefone:</strong>
+        <a href="tel:+67078359053">+670 78359053</a> /
+        <a href="tel:+67073793084">+670 73793084</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer>
+    <p>&copy; 2025 Valdan-Tavia Tour & Travel. Direitos reservados.</p>
+  </footer>
+
+ <script>
+  const state = {
+    asia: 0,
+    eropa: 0,
+    size: 320, // 300px + 2x10px margin
+    maxAsia: 12,
+    maxEropa: 12
+  };
+
+  function slide(region, direction) {
+    const slider = document.querySelector(`.${region}-slider`);
+    const max = region === 'asia' ? state.maxAsia : state.maxEropa;
+    state[region] += direction;
+    if (state[region] < 0) state[region] = max - 1;
+    if (state[region] >= max) state[region] = 0;
+    slider.style.transform = `translateX(-${state[region] * state.size}px)`;
+  }
+</script>
+
+
+</body>
+</html>
